@@ -285,6 +285,11 @@
     document.addEventListener('keyup', e => { if(keys) keys[e.key]=false; });
 
     // Mobile button controls
+    const mobileButtons = document.querySelectorAll('.mobile-btn');
+mobileButtons.forEach(btn => {
+  btn.addEventListener('touchstart', e => e.preventDefault());
+});
+
     const leftBtn = document.getElementById('leftBtn');
     const rightBtn = document.getElementById('rightBtn');
 
