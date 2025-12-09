@@ -47,11 +47,13 @@
 
     /* Mobile controls */
 #mobileControls {
-    display: none;
+    display: none; /* hidden by default, will show via JS */
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 50%; /* vertically centered */
+    transform: translateY(50%);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px; /* distance from sides */
     z-index: 50;
     pointer-events: auto;
 }
@@ -61,10 +63,10 @@
     color: white;
     font-size: 1.5rem;
     padding: 20px;
-    margin: 10px;
     border-radius: 50%;
     user-select: none;
 }
+
 
 /* No media query forcing display */
 
