@@ -47,6 +47,13 @@
 
     /* Mobile controls */
 #mobileControls {
+/* Hide mobile buttons on desktop */
+@media (min-width: 768px) {
+    #mobileControls {
+        display: none !important;
+    }
+}
+
     display: none; /* hidden by default, will show via JS */
     position: fixed;
     bottom: 20%; /* vertically centered */
@@ -306,7 +313,10 @@ if (selectedLevel > getUnlockedLevel()) {
 
     // Show mobile buttons when game starts
     const mobileControls = document.getElementById('mobileControls');
+    if (window.innerWidth < 768) {
     mobileControls.style.display = 'flex';
+}
+
 
   player = { x: 420, y: 330, width: 60, height: 60, speed: 9, frameWidth:60, frameHeight:60 };
   obstacles = [];
