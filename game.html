@@ -268,6 +268,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const hitSound = new Audio('https://freesound.org/data/previews/351/351624_3248244-lq.mp3');
 
 // --- LEVEL LOCK SYSTEM ---
+function refreshLevelButtons() {
+    const unlocked = getUnlockedLevel();
+    const buttons = document.querySelectorAll("#levelMenu button");
+
+    buttons.forEach((btn, index) => {
+        const lvl = index + 1;
+        if (lvl <= unlocked) {
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+        }
+    });
+}
+
 function getUnlockedLevel() {
     return parseInt(localStorage.getItem("unlockedLevel")) || 1;
 }
@@ -350,6 +364,8 @@ mobileButtons.forEach(btn => {
 
     // Hide mobile buttons when game ends
     document.getElementById('mobileControls').style.display = 'none';
+    refreshLevelButtons();
+
 }
 
     function update(){
@@ -418,7 +434,9 @@ mobileButtons.forEach(btn => {
     }
 
     function showLevelComplete(){
-    unlockNextLevel(level);
+   unlockNextLevel(level);
+refreshLevelButtons(); // <--- ADD THIS
+
 
       ctx.fillStyle = 'rgba(0,0,0,0.7)';
       ctx.fillRect(0,0,canvas.width,canvas.height);
